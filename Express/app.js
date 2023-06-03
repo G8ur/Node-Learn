@@ -9,7 +9,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended : false})); // will parse bodies like  and will not parse non default features
 
-app.use(adminRoutes); // using routes
+app.use('/admin',adminRoutes); // using routes  and using filtering routes i.e admin to 
 
 app.use(shopRoutes);
 
