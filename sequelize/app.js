@@ -46,8 +46,8 @@ Cart.belongsToMany(Product,{through: CartItem})  //through is used to tell seque
 Product.belongsToMany(Cart,{through: CartItem})
 
 sequelize
-  // .sync()
-  .sync({force: true})
+  .sync()
+  // .sync({force: true})
   .then((result) => {
     // sync will create table along with all associations
     return User.findByPk(1);
@@ -62,7 +62,10 @@ sequelize
   })
   .then((user) => {
     // console.log(user);
-    app.listen(3000);
+    return user.createCart(); // user to create cart  
+    
+  }).then(cart =>{
+    app.listen(3000)
   })
 
   .catch((err) => {
